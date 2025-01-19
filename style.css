@@ -1,0 +1,102 @@
+*{
+    padding: 0;
+    margin: 0;
+    border: 0;
+  }
+  
+*,*:before,*:after{
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+  
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+  
+nav, footer, header, aside{display:block}
+  
+html, body{
+    height: 100%;
+    width: 100%;
+    font-size: 100%;
+    line-height: 1;
+    font-size: 14px;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+  
+input, button, textarea{font-family:inherit }
+  
+input::-ms-clear{display: none;}
+textarea{resize: none;}
+button{cursor: pointer; background-color: transparent; color: inherit; font-size: inherit; font-family: inherit; font-weight: inherit;}
+button::-moz-focus-inner {padding: 0; border: 0;}
+a, a:visited{text-decoration: none;}
+a:hover{text-decoration: none;}
+a{color: inherit;}
+ul li{list-style: none;}
+img{vertical-align: none;}
+table{border-spacing: 0;}
+  
+h1,h2,h3,h4,h5,h6{font-size: inherit; font-weight: 400;}
+
+body {
+    max-height: calc(100vh - 200px);
+}
+.container {
+    max-width: 1220px;
+    padding: 0 10px;
+    margin: 0 auto;
+}
+.calculator {
+    font-family: "Righteous", serif;
+    padding: 20px;
+    font-size: 34px;
+    background-color: black;
+    max-width: 500px;
+    height: 820px;
+    margin: 50px auto 0;
+    color: white;
+    border-radius: 40px;
+}
+.result {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 200px;
+    border-radius: 40px;
+    text-align: right;
+    font-size: 80px;
+    padding: 10px;
+    color: white;
+    background-color: black;
+    cursor: auto;
+}
+.btns {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+.btn {
+    padding: 30px;
+    border-radius: 50%;
+    background-color: rgb(81, 81, 81);
+}
+.btn:hover {
+    opacity: 0.7;
+    transition: all 0.3s ease 0s;
+}
+.btn--orange {
+    background-color: orange;
+}
+.btn--lightgrey {
+    background-color: rgb(168, 168, 168);
+}
+.zero {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    border-radius: 40px;
+}
