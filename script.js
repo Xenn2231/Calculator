@@ -47,10 +47,10 @@ function operate(num1, operator, num2) {
 buttons.forEach(button => {
     button.addEventListener('click', (e) => {
 
-        // Символ, який був нажатий
+        // Symbol that was pressed
         const key = e.target.textContent;
-
-        // Якщо це цифра 0-9 і оператор не встановлений, то записати в змінну currentValue і вивести в input
+        
+        // If number is '0-9' and operator is undefined - entered to 'currentValue' variable and draw in 'input'
         if (digits.includes(key) && operator === '' ) {
             currentValue += key;
             result.value = currentValue;
@@ -58,7 +58,7 @@ buttons.forEach(button => {
                 return
             }
             console.log(currentValue, storedValue, operator)
-        } else if (digits.includes(key)) {            // Якщо це цифра 0-9 і оператор встановлений
+        } else if (digits.includes(key)) { // If number is '0-9' and operator is defined
             storedValue += key;
             result.value = storedValue;
             if (storedValue) {
@@ -67,24 +67,51 @@ buttons.forEach(button => {
             console.log(currentValue, operator, storedValue)
         }
 
-        // Якщо це оператор +, -, *, /, то записати в змінну operator
+        // If operator is '+, -, *, /' - enter it in 'operator' variable
         if (operators.includes(key) && operator === '') {
             operator = key;
             result.value = operator;
+            console.log(currentValue, storedValue, operator)
         } else if (operators.includes(key)) {
             operator = key;
             result.value = operator;
+            console.log(currentValue, storedValue, operator)
         }
 
-        // Якщо дорівнює, то вивести результат обчислення
+        if (key === '.') {
+
+            // If operator is undefined - work with 'currentValue'
+            if (operator === '') {
+                if (currentValue.includes('.')) {
+                    return; // If decimal already entered - don't add another one
+                }
+                currentValue += key;
+                result.value = currentValue;
+            } else {
+                // If operator is defined - work with 'storedValue'
+                if (storedValue.includes('.')) {
+                    return; // If decimal already entered - don't add another one
+                }
+                storedValue += key;
+                result.value = storedValue;
+            }
+        }
+
+        // If '=' - display result
         if (key === '=') {
+            if (storedValue === '') {
+                clearAll()
+                alert('Error')
+                return
+            }
             result.value = operate(currentValue, operator, storedValue)
             currentValue = result.value;
             storedValue = '';
             operator = '';
+
         }
 
-        // Якщо "С" - очистити
+        // If "С" - clear all
         if (key === 'C') {
             clearAll()
         }
